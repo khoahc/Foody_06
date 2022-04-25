@@ -3,7 +3,9 @@ package hcmute.edu.vn.nhom6.foody_06.Domain;
 import android.content.Context;
 import android.view.LayoutInflater;
 
-public class Store {
+import java.io.Serializable;
+
+public class Store implements Serializable {
     private String name;
     private Integer image = 0;
     private String lastComment;

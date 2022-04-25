@@ -13,11 +13,15 @@
             android:name=".Activity.SignInActivity"
             android:exported="false" />
         <activity
+            android:name=".Activity.StoreDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.MainActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".Activity.IntroActivity"
             android:exported="true" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

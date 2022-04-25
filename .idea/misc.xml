@@ -11,15 +11,19 @@
         <entry key="..\:/Users/khoah/AndroidStudioProjects/Foody_06/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Users/khoah/AndroidStudioProjects/Foody_06/app/src/main/res/layout/activity_main.xml" value="0.152" />
         <entry key="..\:/Users/khoah/AndroidStudioProjects/Foody_06/app/src/main/res/layout/activity_sign_in.xml" value="0.264" />
+        <entry key="..\:/Users/khoah/AndroidStudioProjects/Foody_06/app/src/main/res/layout/activity_store_detail.xml" value="0.536" />
+        <entry key="..\:/Users/khoah/AndroidStudioProjects/Foody_06/app/src/main/res/layout/blank_fragment.xml" value="0.11041666666666666" />
         <entry key="..\:/Users/khoah/AndroidStudioProjects/Foody_06/app/src/main/res/layout/content_home.xml" value="0.25" />
         <entry key="..\:/Users/khoah/AndroidStudioProjects/Foody_06/app/src/main/res/layout/fragment_blank.xml" value="0.25" />
-        <entry key="..\:/Users/khoah/AndroidStudioProjects/Foody_06/app/src/main/res/layout/fragment_cart.xml" value="0.4" />
+        <entry key="..\:/Users/khoah/AndroidStudioProjects/Foody_06/app/src/main/res/layout/fragment_cart.xml" value="0.2" />
         <entry key="..\:/Users/khoah/AndroidStudioProjects/Foody_06/app/src/main/res/layout/fragment_empty.xml" value="0.25" />
         <entry key="..\:/Users/khoah/AndroidStudioProjects/Foody_06/app/src/main/res/layout/fragment_first.xml" value="0.1" />
         <entry key="..\:/Users/khoah/AndroidStudioProjects/Foody_06/app/src/main/res/layout/fragment_home.xml" value="0.264" />
         <entry key="..\:/Users/khoah/AndroidStudioProjects/Foody_06/app/src/main/res/layout/fragment_profile.xml" value="0.4" />
         <entry key="..\:/Users/khoah/AndroidStudioProjects/Foody_06/app/src/main/res/layout/fragment_profile_item_list.xml" value="0.4" />
         <entry key="..\:/Users/khoah/AndroidStudioProjects/Foody_06/app/src/main/res/layout/fragment_second.xml" value="0.25" />
+        <entry key="..\:/Users/khoah/AndroidStudioProjects/Foody_06/app/src/main/res/layout/fragment_store_detail.xml" value="0.264" />
+        <entry key="..\:/Users/khoah/AndroidStudioProjects/Foody_06/app/src/main/res/layout/fragment_toolbar.xml" value="0.11041666666666666" />
         <entry key="..\:/Users/khoah/AndroidStudioProjects/Foody_06/app/src/main/res/layout/viewholder_store.xml" value="0.4" />
         <entry key="..\:/Users/khoah/AndroidStudioProjects/Foody_06/app/src/main/res/menu/menu.xml" value="0.264" />
       </map>

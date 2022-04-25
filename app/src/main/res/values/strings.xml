@@ -2,8 +2,14 @@
     <string name="app_name">Foody_06</string>
     <string name="title_home">Trang chủ</string>
     <string name="title_cart">Đơn hàng</string>
+    <string name="title_name_store">Tên quán</string>
+    <string name="title_address_store">Địa chỉ quán</string>
+    <string name="title_comment">Bình luận</string>
     <string name="title_profile">Tài khoản</string>
     <string name="title_search">Tìm món ăn, tên quán,...</string>
     <string name="sign_in_with_google">Đăng nhập bằng Google</string>
+    <string name="button_arrow_back">Quay lại</string>
+    <string name="image_store">Hình quán</string>
+    <string name="button_order">Đặt giao hàng</string>
 
 </resources>

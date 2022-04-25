@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/homeFragment"
     android:focusable="true"
     android:focusableInTouchMode="true"
     tools:context=".Fragment.HomeFragment">
@@ -51,9 +52,9 @@
     <GridView
         android:id="@+id/gridView"
         android:layout_width="match_parent"
-        android:layout_height="550dp"
-        android:layout_marginStart="20dp"
+        android:layout_height="0dp"
         android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:horizontalSpacing="10dp"
@@ -64,6 +65,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/g1"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.754" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

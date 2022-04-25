@@ -5,16 +5,19 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
 
+import hcmute.edu.vn.nhom6.foody_06.Domain.Store;
 import hcmute.edu.vn.nhom6.foody_06.Fragment.CartFragment;
 import hcmute.edu.vn.nhom6.foody_06.Fragment.HomeFragment;
 import hcmute.edu.vn.nhom6.foody_06.Fragment.ProfileFragment;
+import hcmute.edu.vn.nhom6.foody_06.Interface.TransactStore;
 import hcmute.edu.vn.nhom6.foody_06.R;
 import hcmute.edu.vn.nhom6.foody_06.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements TransactStore {
     private ActivityMainBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
             return true;
         });
 
-
     }
 
     private void replaceFragment(Fragment fragment) {
@@ -53,6 +55,14 @@ public class MainActivity extends AppCompatActivity {
                 .setReorderingAllowed(true)
                 .replace(R.id.nav_host_fragment_activity_main, fragment);
         fragmentTransaction.commit();
+    }
+
+    @Override
+    public void DataStore(Store store) {
+        Intent intent = new Intent(MainActivity.this, StoreDetailActivity.class);
+        intent.putExtra("infoStore", store);
+        startActivity(intent);
+        finish();
     }
 
 }
