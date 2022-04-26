@@ -84,6 +84,17 @@
             app:cornerRadius="@dimen/_20ssp"
             app:backgroundTint="@color/primary"/>
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonSignInAdmin"
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginTop="@dimen/_20ssp"
+            android:text="Đăng nhập Admin"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            app:cornerRadius="@dimen/_20ssp"
+            app:backgroundTint="@color/primary"/>
+
         <TextView
             android:id="@+id/textSignup"
             android:layout_width="wrap_content"

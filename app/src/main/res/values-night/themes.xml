@@ -8,7 +8,7 @@
     </style>
 
     <style name="ThemeOverlay.Foody_06.FullscreenContainer" parent="">
-        <item name="fullscreenBackgroundColor">@color/light_blue_900</item>
-        <item name="fullscreenTextColor">@color/light_blue_A400</item>
+        <item name="fullscreenBackgroundColor">@color/primary</item>
+        <item name="fullscreenTextColor">@color/primary</item>
     </style>
 </resources>

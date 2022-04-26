@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Foody_06">
         <activity
+            android:name=".Activity.AdminAddStoreActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.AdminStoreDetailActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Activity.AdminMainActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
             android:name=".Activity.OrderActivity"
             android:exported="false" />
         <activity

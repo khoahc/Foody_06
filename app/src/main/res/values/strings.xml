@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Foody_06</string>
+    <string name="save">Lưu</string>
+    <string name="delete">Xóa</string>
     <string name="title_home">Trang chủ</string>
+    <string name="title_admin_home">Trang chủ admin</string>
     <string name="title_cart">Đơn hàng</string>
     <string name="title_name_store">Tên quán</string>
     <string name="title_oder">Đặt món</string>
@@ -12,12 +15,21 @@
     <string name="button_arrow_back">Quay lại</string>
     <string name="image_store">Hình quán</string>
     <string name="button_order">Đặt giao hàng</string>
+    <string name="button_add_store">Thêm cửa hàng</string>
+    <string name="button_add_food">Thêm món</string>
     <string name="title_name_food">Tên món</string>
+    <string name="title_quantity_food">Số lượng</string>
     <string name="title_price_food">Giá</string>
+    <string name="title_input_price_food">Nhập giá (VNĐ)</string>
+    <string name="title_input_quantity_food">Nhập số lượng</string>
+    <string name="disable_store">Vô hiệu hóa quán</string>
+    <string name="title_input_name_food">Nhập tên món (VNĐ)</string>
     <string name="title_address">Địa chỉ nhận hàng</string>
     <string name="title_phone_number">Số điện thoại</string>
-
+    <string name="save_store">Lưu quán</string>
     <string name="title_total_money">Tổng tiền</string>
+    <string name="title_activity_admin_main">AdminMainActivity</string>
+    <string name="title_list_menu">Danh sách món</string>
 
 
 </resources>

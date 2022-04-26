@@ -4,6 +4,7 @@
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primary</item>
         <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/primary</item>
     </style>
 
     <style name="Theme.Foody_06.NoActionBar">
@@ -16,7 +17,7 @@
     <style name="Theme.Foody_06.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="ThemeOverlay.Foody_06.FullscreenContainer" parent="">
-        <item name="fullscreenBackgroundColor">@color/light_blue_600</item>
-        <item name="fullscreenTextColor">@color/light_blue_A200</item>
+        <item name="fullscreenBackgroundColor">@color/primary</item>
+        <item name="fullscreenTextColor">@color/white</item>
     </style>
 </resources>

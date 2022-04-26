@@ -19,6 +19,13 @@
     </fragment>
 
     <fragment
+        android:id="@+id/adminHomeFragment"
+        android:name="hcmute.edu.vn.nhom6.foody_06.Fragment.AdminHomeFragment"
+        android:label="@string/title_admin_home"
+        tools:layout="@layout/fragment_admin_home">
+    </fragment>
+
+    <fragment
         android:id="@+id/cartFragment"
         android:name="hcmute.edu.vn.nhom6.foody_06.Fragment.CartFragment"
         android:label="@string/title_cart"

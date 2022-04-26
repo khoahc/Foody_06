@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/homeFragment"
+    android:id="@+id/adminHomeFragment"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    tools:context=".Fragment.HomeFragment">
+    tools:context=".Fragment.AdminHomeFragment">
 
     <include layout="@layout/searchbar" />
 
@@ -17,6 +17,17 @@
         app:layout_constraintGuide_percent="0.075"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/buttonAddStore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_6ssp"
+        android:text="@string/button_add_store"
+        android:textColor="#FFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/g1" />
 
     <GridView
         android:id="@+id/gridView"
@@ -33,7 +44,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/g1"
+        app:layout_constraintTop_toBottomOf="@id/buttonAddStore"
         app:layout_constraintVertical_bias="0.754" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

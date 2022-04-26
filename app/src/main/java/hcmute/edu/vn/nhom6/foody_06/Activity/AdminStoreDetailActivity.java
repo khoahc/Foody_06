@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,15 +14,15 @@ import hcmute.edu.vn.nhom6.foody_06.Domain.Store;
 import hcmute.edu.vn.nhom6.foody_06.Interface.TransactStore;
 import hcmute.edu.vn.nhom6.foody_06.R;
 
-public class StoreDetailActivity extends AppCompatActivity implements TransactStore {
+public class AdminStoreDetailActivity extends AppCompatActivity implements TransactStore {
     ImageView btnReturn;
-    TextView txtNameStore, txtAddressStore, txtTitleNameStore;
-    Button btnOrder;
+    EditText editNameStore;
+    TextView txtTitleNameStore;
     Store store;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_store_detail);
+        setContentView(R.layout.activity_admin_store_detail);
 
         Intent intent = getIntent();
 
@@ -32,18 +33,8 @@ public class StoreDetailActivity extends AppCompatActivity implements TransactSt
         btnReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(StoreDetailActivity.this, MainActivity.class);
+                Intent intent = new Intent(AdminStoreDetailActivity.this, AdminMainActivity.class);
                 startActivity(intent);
-                finish();
-            }
-        });
-
-        btnOrder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DataStore(store);
-//                Intent intent = new Intent(StoreDetailActivity.this, OrderActivity.class);
-//                startActivity(intent);
                 finish();
             }
         });
@@ -52,21 +43,19 @@ public class StoreDetailActivity extends AppCompatActivity implements TransactSt
 
     public void setInfo(Store store) {
         String name = store.getName();
-        txtNameStore.setText(name);
+        editNameStore.setText(name);
         txtTitleNameStore.setText(name);
     }
 
     private void anhXa(){
-        txtNameStore = (TextView) findViewById(R.id.textViewNameStore);
-       // TextView txtAddressStore = (TextView) view.findViewById(R.id.textViewAddressStore);
+        editNameStore = (EditText) findViewById(R.id.editTextNameStore);
         btnReturn = (ImageView) findViewById(R.id.buttonReturn);
-        btnOrder = (Button) findViewById(R.id.buttonOrder);
         txtTitleNameStore = (TextView) findViewById(R.id.textViewTitleNameStore);
     }
 
     @Override
     public void DataStore(Store store) {
-        Intent intent = new Intent(StoreDetailActivity.this, OrderActivity.class);
+        Intent intent = new Intent(AdminStoreDetailActivity.this, OrderActivity.class);
         intent.putExtra("infoStore", store);
         startActivity(intent);
         finish();

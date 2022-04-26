@@ -6,31 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Fragment.CartFragment">
 
-    <LinearLayout
-        android:id="@+id/linearLayout1"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/primary"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:orientation="vertical"
-        android:gravity="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/g1">
-
-        <TextView
-            android:id="@+id/textViewCart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:textColor="@color/white"
-            android:text="@string/title_cart"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </LinearLayout>
+    <include layout="@layout/titlebar"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/g1"

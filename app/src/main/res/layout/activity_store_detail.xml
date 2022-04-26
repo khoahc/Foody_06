@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Activity.StoreDetailActivity">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -23,19 +23,22 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
             android:background="@drawable/arrow_back"
             android:contentDescription="@string/button_arrow_back" />
 
         <TextView
-            android:id="@+id/textViewCart"
+            android:id="@+id/textViewTitleNameStore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
             android:layout_marginStart="@dimen/_100sdp"
-            android:textColor="@color/white"
+            android:layout_centerInParent="true"
             android:text="@string/title_name_store"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16ssp"
             android:textStyle="bold" />
-    </LinearLayout>
+    </RelativeLayout >
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/g1"
