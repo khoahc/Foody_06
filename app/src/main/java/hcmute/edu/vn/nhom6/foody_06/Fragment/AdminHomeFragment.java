@@ -1,11 +1,13 @@
 package hcmute.edu.vn.nhom6.foody_06.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
 
 import androidx.annotation.NonNull;
@@ -13,17 +15,18 @@ import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
 
+import hcmute.edu.vn.nhom6.foody_06.Activity.AdminAddStoreActivity;
 import hcmute.edu.vn.nhom6.foody_06.Adapter.StoreAdapter;
 import hcmute.edu.vn.nhom6.foody_06.Domain.Store;
 import hcmute.edu.vn.nhom6.foody_06.Interface.TransactStore;
 import hcmute.edu.vn.nhom6.foody_06.R;
 import hcmute.edu.vn.nhom6.foody_06.databinding.FragmentAdminHomeBinding;
-import hcmute.edu.vn.nhom6.foody_06.databinding.FragmentHomeBinding;
 
 public class AdminHomeFragment extends Fragment {
 
     GridView listViewStore;
-    ArrayList<Store> arrayStore = new ArrayList<Store>();;
+    ArrayList<Store> arrayStore = new ArrayList<Store>();
+    Button btnAddStore;
     private FragmentAdminHomeBinding binding;
     TransactStore transactStore;
     @Override
@@ -46,6 +49,17 @@ public class AdminHomeFragment extends Fragment {
                 arrayStore
         );
 
+        //vao them quan an
+        btnAddStore = binding.getRoot().findViewById(R.id.buttonAddStore);
+        btnAddStore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), AdminAddStoreActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //gridview quan an
         listViewStore.setAdapter(adapter);
 
         listViewStore.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -56,6 +70,7 @@ public class AdminHomeFragment extends Fragment {
                 transactStore.DataStore(arrayStore.get(position));
             }
         });
+
         return binding.getRoot();
     }
 
@@ -78,6 +93,5 @@ public class AdminHomeFragment extends Fragment {
         arrayStore.add(new Store("Quán phở Bình Minh", "quán thoáng mát", R.drawable.pho));
         arrayStore.add(new Store("Quán cơm Phúc Lộc Thọ", "lần đầu ăn ở đây khá là ngon", R.drawable.quancom));
     }
-
 
 }

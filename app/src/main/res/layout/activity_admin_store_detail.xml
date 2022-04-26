@@ -95,6 +95,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/title_input_name_store"
                 android:inputType="textPersonName"
                 android:text="@string/title_name_store"
                 android:textSize="@dimen/_12sdp" />
@@ -119,6 +120,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/title_input_address_store"
                 android:inputType="textPersonName"
                 android:text="@string/title_address_store"
                 android:textSize="@dimen/_12sdp" />
@@ -158,7 +160,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/title_input_price_food"
+                android:hint="@string/title_input_name_food"
                 android:inputType="textPersonName"
                 android:textSize="@dimen/_12sdp" />
 

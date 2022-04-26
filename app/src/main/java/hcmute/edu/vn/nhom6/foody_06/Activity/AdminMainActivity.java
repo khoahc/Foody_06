@@ -17,7 +17,7 @@ import hcmute.edu.vn.nhom6.foody_06.Interface.TransactStore;
 import hcmute.edu.vn.nhom6.foody_06.R;
 import hcmute.edu.vn.nhom6.foody_06.databinding.ActivityAdminMainBinding;
 
-public class AdminMainActivity extends AppCompatActivity implements TransactStore {
+public class AdminMainActivity extends AppCompatActivity implements TransactStore{
     private ActivityAdminMainBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

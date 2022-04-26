@@ -6,6 +6,7 @@
     <string name="title_admin_home">Trang chủ admin</string>
     <string name="title_cart">Đơn hàng</string>
     <string name="title_name_store">Tên quán</string>
+    <string name="title_add_store">Tạo quán</string>
     <string name="title_oder">Đặt món</string>
     <string name="title_address_store">Địa chỉ quán</string>
     <string name="title_comment">Bình luận</string>
@@ -23,7 +24,10 @@
     <string name="title_input_price_food">Nhập giá (VNĐ)</string>
     <string name="title_input_quantity_food">Nhập số lượng</string>
     <string name="disable_store">Vô hiệu hóa quán</string>
-    <string name="title_input_name_food">Nhập tên món (VNĐ)</string>
+    <string name="title_input_name_store">Nhập tên quán</string>
+    <string name="title_input_name_food">Nhập tên món</string>
+    <string name="title_input_address_store">Nhập địa chỉ quán</string>
+
     <string name="title_address">Địa chỉ nhận hàng</string>
     <string name="title_phone_number">Số điện thoại</string>
     <string name="save_store">Lưu quán</string>
