@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import hcmute.edu.vn.nhom6.foody_06.Activity.InformationActivity;
 import hcmute.edu.vn.nhom6.foody_06.Activity.SignInActivity;
 import hcmute.edu.vn.nhom6.foody_06.databinding.FragmentProfileBinding;
 
@@ -36,6 +37,15 @@ public class ProfileFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent();
                 intent.setClass(getActivity(), SignInActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        binding.textViewInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), InformationActivity.class);
                 startActivity(intent);
             }
         });

@@ -6,6 +6,7 @@
     <string name="title_admin_home">Trang chủ admin</string>
     <string name="title_cart">Đơn hàng</string>
     <string name="title_name_store">Tên quán</string>
+    <string name="title_information">Thông tin cá nhân</string>
     <string name="title_add_store">Tạo quán</string>
     <string name="title_oder">Đặt món</string>
     <string name="title_address_store">Địa chỉ quán</string>
@@ -15,6 +16,7 @@
     <string name="sign_in_with_google">Đăng nhập bằng Google</string>
     <string name="button_arrow_back">Quay lại</string>
     <string name="image_store">Hình quán</string>
+    <string name="image_avatar">avatar</string>
     <string name="button_order">Đặt giao hàng</string>
     <string name="button_add_store">Thêm cửa hàng</string>
     <string name="button_add_food">Thêm món</string>
@@ -27,7 +29,6 @@
     <string name="title_input_name_store">Nhập tên quán</string>
     <string name="title_input_name_food">Nhập tên món</string>
     <string name="title_input_address_store">Nhập địa chỉ quán</string>
-
     <string name="title_address">Địa chỉ nhận hàng</string>
     <string name="title_phone_number">Số điện thoại</string>
     <string name="save_store">Lưu quán</string>
@@ -35,5 +36,8 @@
     <string name="title_activity_admin_main">AdminMainActivity</string>
     <string name="title_list_menu">Danh sách món</string>
 
+    <string name="title_name_user">Họ và tên</string>
+    <string name="title_username">Tên đăng nhập</string>
+    <string name="title_address_user">Địa chỉ giao hàng</string>
 
 </resources>
