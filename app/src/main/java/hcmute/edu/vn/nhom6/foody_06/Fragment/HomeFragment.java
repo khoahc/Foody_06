@@ -83,13 +83,5 @@ public class HomeFragment extends Fragment {
         arrayStore.add(new Store("Quán cơm Phúc Lộc Thọ", "lần đầu ăn ở đây khá là ngon", R.drawable.quancom));
     }
 
-//    @Override
-//    public void DataStore(Store store) {
-////        StoreDetailFragment fragmentStudentInfo = (StoreDetailFragment)
-////                getParentFragmentManager().findFragmentById(R.id.fragmentInfoStore);
-//
-//
-//
-//    }
 
 }

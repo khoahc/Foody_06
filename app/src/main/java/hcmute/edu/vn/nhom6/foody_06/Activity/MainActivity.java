@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements TransactStore {
         fragmentTransaction.commit();
     }
 
+
     @Override
     public void DataStore(Store store) {
         Intent intent = new Intent(MainActivity.this, StoreDetailActivity.class);

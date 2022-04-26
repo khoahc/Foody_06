@@ -3,6 +3,7 @@
     <string name="title_home">Trang chủ</string>
     <string name="title_cart">Đơn hàng</string>
     <string name="title_name_store">Tên quán</string>
+    <string name="title_oder">Đặt món</string>
     <string name="title_address_store">Địa chỉ quán</string>
     <string name="title_comment">Bình luận</string>
     <string name="title_profile">Tài khoản</string>
@@ -11,5 +12,12 @@
     <string name="button_arrow_back">Quay lại</string>
     <string name="image_store">Hình quán</string>
     <string name="button_order">Đặt giao hàng</string>
+    <string name="title_name_food">Tên món</string>
+    <string name="title_price_food">Giá</string>
+    <string name="title_address">Địa chỉ nhận hàng</string>
+    <string name="title_phone_number">Số điện thoại</string>
+
+    <string name="title_total_money">Tổng tiền</string>
+
 
 </resources>
