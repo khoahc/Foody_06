@@ -9,7 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
 
-import hcmute.edu.vn.nhom6.foody_06.Domain.Store;
+import hcmute.edu.vn.nhom6.foody_06.Modal.Store;
 import hcmute.edu.vn.nhom6.foody_06.Fragment.AdminHomeFragment;
 import hcmute.edu.vn.nhom6.foody_06.Fragment.CartFragment;
 import hcmute.edu.vn.nhom6.foody_06.Fragment.ProfileFragment;

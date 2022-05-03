@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import hcmute.edu.vn.nhom6.foody_06.Domain.Store;
+import hcmute.edu.vn.nhom6.foody_06.Modal.Store;
 import hcmute.edu.vn.nhom6.foody_06.Interface.TransactStore;
 import hcmute.edu.vn.nhom6.foody_06.R;
 
@@ -54,14 +54,15 @@ public class StoreDetailActivity extends AppCompatActivity implements TransactSt
         String name = store.getName();
         txtNameStore.setText(name);
         txtTitleNameStore.setText(name);
+        txtAddressStore.setText(store.getAddress());
     }
 
     private void anhXa(){
         txtNameStore = (TextView) findViewById(R.id.textViewNameStore);
-       // TextView txtAddressStore = (TextView) view.findViewById(R.id.textViewAddressStore);
         btnReturn = (ImageView) findViewById(R.id.buttonReturn);
         btnOrder = (Button) findViewById(R.id.buttonOrder);
         txtTitleNameStore = (TextView) findViewById(R.id.textViewTitleNameStore);
+        txtAddressStore = (TextView) findViewById(R.id.textViewAddressStore);
     }
 
     @Override

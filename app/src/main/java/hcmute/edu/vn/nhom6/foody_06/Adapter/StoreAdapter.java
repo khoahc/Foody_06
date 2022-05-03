@@ -10,8 +10,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import hcmute.edu.vn.nhom6.foody_06.Domain.Store;
-import hcmute.edu.vn.nhom6.foody_06.Fragment.HomeFragment;
+import hcmute.edu.vn.nhom6.foody_06.Modal.Store;
 import hcmute.edu.vn.nhom6.foody_06.R;
 
 public class StoreAdapter extends BaseAdapter {
@@ -52,7 +51,7 @@ public class StoreAdapter extends BaseAdapter {
         txtLastComment.setText(String.valueOf(storeList.get(i).getLastComment()));
 
         ImageView imgHinh = (ImageView) view.findViewById(R.id.imageViewStore);
-        imgHinh.setImageResource(storeList.get(i).getImage());
+        imgHinh.setImageResource(R.drawable.gachien);
 
         return view;
     }

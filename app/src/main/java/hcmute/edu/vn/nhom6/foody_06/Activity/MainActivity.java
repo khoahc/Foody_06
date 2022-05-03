@@ -9,7 +9,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
 
-import hcmute.edu.vn.nhom6.foody_06.Domain.Store;
+import hcmute.edu.vn.nhom6.foody_06.Data.DatabaseHelper;
+import hcmute.edu.vn.nhom6.foody_06.Modal.Store;
 import hcmute.edu.vn.nhom6.foody_06.Fragment.CartFragment;
 import hcmute.edu.vn.nhom6.foody_06.Fragment.HomeFragment;
 import hcmute.edu.vn.nhom6.foody_06.Fragment.ProfileFragment;
@@ -19,6 +20,7 @@ import hcmute.edu.vn.nhom6.foody_06.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity implements TransactStore {
     private ActivityMainBinding binding;
+    DatabaseHelper databaseHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +30,9 @@ public class MainActivity extends AppCompatActivity implements TransactStore {
         setContentView(binding.getRoot());
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+//        databaseHelper = new DatabaseHelper(MainActivity.this);
+//        databaseHelper.createDefaultStoresIfNeed();
 
         replaceFragment(new HomeFragment());
 

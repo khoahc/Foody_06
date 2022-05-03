@@ -6,16 +6,20 @@ import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import hcmute.edu.vn.nhom6.foody_06.Data.DatabaseHelper;
 import hcmute.edu.vn.nhom6.foody_06.R;
 
 public class IntroActivity extends AppCompatActivity {
     Handler handler;
+    //DatabaseHelper databaseHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
 
-        handler=new Handler();
+//        databaseHelper = new DatabaseHelper(IntroActivity.this);
+
+        handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
