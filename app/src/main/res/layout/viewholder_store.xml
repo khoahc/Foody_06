@@ -13,9 +13,8 @@
         android:id="@+id/imageViewStore"
         android:layout_width="wrap_content"
         android:layout_height="150dp"
-        android:scaleType="fitCenter"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@id/textViewNameStore"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
@@ -24,23 +23,12 @@
         android:id="@+id/textViewNameStore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
         android:textSize="18sp"
         android:textStyle="bold"
         android:text="Ten cua hang"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewStore"
         app:layout_constraintVertical_bias="0.044"/>
-
-    <TextView
-        android:id="@+id/textViewLastComment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Comment"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNameStore"
-        app:layout_constraintVertical_bias="0.044" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

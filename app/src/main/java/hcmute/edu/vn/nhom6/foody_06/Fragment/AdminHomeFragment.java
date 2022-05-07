@@ -17,20 +17,19 @@ import java.util.List;
 
 import hcmute.edu.vn.nhom6.foody_06.Activity.AdminAddStoreActivity;
 import hcmute.edu.vn.nhom6.foody_06.Adapter.StoreAdapter;
-import hcmute.edu.vn.nhom6.foody_06.Data.DatabaseHelper;
-import hcmute.edu.vn.nhom6.foody_06.Modal.Store;
+import hcmute.edu.vn.nhom6.foody_06.Data.DatabaseAccess;
 import hcmute.edu.vn.nhom6.foody_06.Interface.TransactStore;
+import hcmute.edu.vn.nhom6.foody_06.Modal.Store;
 import hcmute.edu.vn.nhom6.foody_06.R;
 import hcmute.edu.vn.nhom6.foody_06.databinding.FragmentAdminHomeBinding;
 
 public class AdminHomeFragment extends Fragment {
 
     GridView listViewStore;
-    ArrayList<Store> arrayStore = new ArrayList<Store>();
+    List<Store> listStore = new ArrayList<Store>();
     Button btnAddStore;
     private FragmentAdminHomeBinding binding;
     TransactStore transactStore;
-    DatabaseHelper databaseHelper;
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -43,11 +42,10 @@ public class AdminHomeFragment extends Fragment {
 
         listViewStore = binding.getRoot().findViewById(R.id.gridView);
 
-        //addArrayStore();
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getActivity());
+        databaseAccess.open();
 
-        databaseHelper = new DatabaseHelper(getActivity());
-        databaseHelper.createDefaultStoresIfNeed();
-        List<Store> listStore = databaseHelper.getAllStores();
+        listStore = databaseAccess.getListStore();
 
         StoreAdapter adapter = new StoreAdapter(
                 AdminHomeFragment.this.getActivity(),
@@ -90,14 +88,5 @@ public class AdminHomeFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
-
-//    private void addArrayStore () {
-//        arrayStore.add(new Store("Quán cơm chiên Đình Long", "quán nấu ngon", R.drawable.comchien));
-//        arrayStore.add(new Store("Quán gà chiên Đỉnh Ký", "quán ok", R.drawable.gachien));
-//        arrayStore.add(new Store("Quán gà xối mỡ Thiên An", "tạm được", R.drawable.gaxoimo));
-//        arrayStore.add(new Store("Quán hải sản Thủy Tề", "không ngon cho lắm", R.drawable.haisan));
-//        arrayStore.add(new Store("Quán phở Bình Minh", "quán thoáng mát", R.drawable.pho));
-//        arrayStore.add(new Store("Quán cơm Phúc Lộc Thọ", "lần đầu ăn ở đây khá là ngon", R.drawable.quancom));
-//    }
 
 }

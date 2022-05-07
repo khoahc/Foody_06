@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"/>
 
     <TextView
-        android:id="@+id/textZalo"
+        android:id="@+id/textFoody"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -50,7 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginTop="40dp"
-            android:hint="Email"
+            android:hint="@string/title_phone_number"
             android:imeOptions="actionNext"
             android:importantForAutofill="no"
             android:inputType="phone"

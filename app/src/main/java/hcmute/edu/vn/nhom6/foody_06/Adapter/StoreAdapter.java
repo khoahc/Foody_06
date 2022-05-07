@@ -1,6 +1,8 @@
 package hcmute.edu.vn.nhom6.foody_06.Adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,11 +49,10 @@ public class StoreAdapter extends BaseAdapter {
         TextView txtNameStore = (TextView) view.findViewById(R.id.textViewNameStore);
         txtNameStore.setText(storeList.get(i).getName());
 
-        TextView txtLastComment = (TextView) view.findViewById(R.id.textViewLastComment);
-        txtLastComment.setText(String.valueOf(storeList.get(i).getLastComment()));
-
-        ImageView imgHinh = (ImageView) view.findViewById(R.id.imageViewStore);
-        imgHinh.setImageResource(R.drawable.gachien);
+        ImageView imgImageStore = (ImageView) view.findViewById(R.id.imageViewStore);
+        Bitmap bmImageStore = BitmapFactory.decodeByteArray(storeList.get(i).getImage(),
+                0, storeList.get(i).getImage().length);
+        imgImageStore.setImageBitmap(bmImageStore);
 
         return view;
     }

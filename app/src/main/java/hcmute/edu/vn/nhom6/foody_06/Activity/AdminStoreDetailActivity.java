@@ -9,8 +9,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import hcmute.edu.vn.nhom6.foody_06.Modal.Store;
 import hcmute.edu.vn.nhom6.foody_06.Interface.TransactStore;
+import hcmute.edu.vn.nhom6.foody_06.Modal.Store;
+import hcmute.edu.vn.nhom6.foody_06.Modal.User;
 import hcmute.edu.vn.nhom6.foody_06.R;
 
 public class AdminStoreDetailActivity extends AppCompatActivity implements TransactStore {
@@ -62,4 +63,6 @@ public class AdminStoreDetailActivity extends AppCompatActivity implements Trans
         startActivity(intent);
         finish();
     }
+
+
 }

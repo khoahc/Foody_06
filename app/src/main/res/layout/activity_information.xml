@@ -76,7 +76,7 @@
                 android:contentDescription="@string/image_avatar" />
 
             <TextView
-                android:id="@+id/textViewNameStore"
+                android:id="@+id/textViewTitleFullName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_3ssp"
@@ -92,7 +92,7 @@
 
 
             <EditText
-                android:id="@+id/editTextNameStore"
+                android:id="@+id/editTextFullName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -100,32 +100,9 @@
                 android:inputType="textPersonName"
                 android:textSize="@dimen/_12sdp" />
 
-            <TextView
-                android:id="@+id/textViewUsername"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_3ssp"
-                android:layout_marginTop="8dp"
-                android:gravity="start"
-                android:text="@string/title_username"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_12sdp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.047"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewNameStore" />
-
-            <EditText
-                android:id="@+id/editTextAddressStore"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/title_username"
-                android:inputType="textPersonName"
-                android:textSize="@dimen/_12sdp" />
 
             <TextView
-                android:id="@+id/textViewPhoneNumber"
+                android:id="@+id/textViewTitlePhoneNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_3ssp"
@@ -139,10 +116,12 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewNameStore" />
 
-            <EditText
-                android:id="@+id/editTextNameFood"
+            <TextView
+                android:id="@+id/textViewPhoneNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_3ssp"
+                android:layout_marginTop="8dp"
                 android:ems="10"
                 android:hint="@string/title_phone_number"
                 android:inputType="phone"
@@ -164,7 +143,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textViewNameStore" />
 
             <EditText
-                android:id="@+id/editTextPriceFood"
+                android:id="@+id/editTextAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"

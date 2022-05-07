@@ -4,21 +4,20 @@ import java.io.Serializable;
 
 public class Store implements Serializable {
     private String name;
-    private String address;
-    private String image = "";
-    private String lastComment;
+    private String addressStore;
+    private byte[] image;
     private boolean state;
 
-    public Store(String name, String address, String image, String lastComment, boolean state) {
+    public Store(String name, String address, byte[] image, boolean state) {
         this.name = name;
-        this.address = address;
+        this.addressStore = address;
         this.image = image;
-        this.lastComment = lastComment;
         this.state = state;
     }
 
     public Store() {
     }
+
 
     public String getName() {
         return name;
@@ -29,27 +28,19 @@ public class Store implements Serializable {
     }
 
     public String getAddress() {
-        return address;
+        return addressStore;
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        this.addressStore = address;
     }
 
-    public String getImage() {
+    public byte[] getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(byte[] image) {
         this.image = image;
-    }
-
-    public String getLastComment() {
-        return lastComment;
-    }
-
-    public void setLastComment(String lastComment) {
-        this.lastComment = lastComment;
     }
 
     public boolean isState() {

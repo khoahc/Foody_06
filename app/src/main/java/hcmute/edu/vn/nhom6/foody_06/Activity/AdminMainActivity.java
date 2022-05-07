@@ -9,15 +9,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
 
+import hcmute.edu.vn.nhom6.foody_06.Interface.TransactStore;
 import hcmute.edu.vn.nhom6.foody_06.Modal.Store;
 import hcmute.edu.vn.nhom6.foody_06.Fragment.AdminHomeFragment;
 import hcmute.edu.vn.nhom6.foody_06.Fragment.CartFragment;
 import hcmute.edu.vn.nhom6.foody_06.Fragment.ProfileFragment;
-import hcmute.edu.vn.nhom6.foody_06.Interface.TransactStore;
+import hcmute.edu.vn.nhom6.foody_06.Modal.User;
 import hcmute.edu.vn.nhom6.foody_06.R;
 import hcmute.edu.vn.nhom6.foody_06.databinding.ActivityAdminMainBinding;
 
-public class AdminMainActivity extends AppCompatActivity implements TransactStore{
+public class AdminMainActivity extends AppCompatActivity implements TransactStore {
     private ActivityAdminMainBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,5 +66,7 @@ public class AdminMainActivity extends AppCompatActivity implements TransactStor
         startActivity(intent);
         finish();
     }
+
+
 
 }

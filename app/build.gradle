@@ -29,6 +29,13 @@ android {
     buildFeatures {
         viewBinding true
     }
+    sourceSets {
+        main {
+            assets {
+                srcDirs 'src\\main\\assets'
+            }
+        }
+    }
 }
 
 dependencies {
@@ -53,5 +60,8 @@ dependencies {
     // Scalable Size Unit (support for different screen sizes)
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
     implementation 'com.intuit.ssp:ssp-android:1.0.6'
+
+    //sqlite asset helper
+    implementation 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
 
 }

@@ -13,11 +13,18 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import hcmute.edu.vn.nhom6.foody_06.Activity.InformationActivity;
 import hcmute.edu.vn.nhom6.foody_06.Activity.SignInActivity;
+import hcmute.edu.vn.nhom6.foody_06.Interface.TransactStore;
+import hcmute.edu.vn.nhom6.foody_06.Interface.TransactUser;
+import hcmute.edu.vn.nhom6.foody_06.Modal.User;
+import hcmute.edu.vn.nhom6.foody_06.R;
 import hcmute.edu.vn.nhom6.foody_06.databinding.FragmentProfileBinding;
 
 public class ProfileFragment extends Fragment {
     private FragmentProfileBinding binding;
     private TextView btnLogout;
+    private TextView textViewProfile;
+    User user;
+    TransactUser transactUser;
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -25,6 +32,14 @@ public class ProfileFragment extends Fragment {
     ) {
 
         binding = FragmentProfileBinding.inflate(inflater, container, false);
+
+        transactUser = (TransactUser) getActivity();
+        user = transactUser.getDataUser();
+
+        //show fullname
+        textViewProfile = (TextView) binding.textViewProfile;
+        textViewProfile.setText(user.getFullName());
+
         return binding.getRoot();
 
     }
@@ -46,6 +61,7 @@ public class ProfileFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent();
                 intent.setClass(getActivity(), InformationActivity.class);
+                intent.putExtra("infoUser", user);
                 startActivity(intent);
             }
         });
