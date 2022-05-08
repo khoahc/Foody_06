@@ -8,8 +8,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import hcmute.edu.vn.nhom6.foody_06.Adapter.FoodAdapter;
+import hcmute.edu.vn.nhom6.foody_06.Adapter.FoodSelectedAdapter;
 import hcmute.edu.vn.nhom6.foody_06.Interface.TransactStore;
+import hcmute.edu.vn.nhom6.foody_06.Modal.Food;
+import hcmute.edu.vn.nhom6.foody_06.Modal.FoodSelected;
 import hcmute.edu.vn.nhom6.foody_06.Modal.Store;
 import hcmute.edu.vn.nhom6.foody_06.Modal.User;
 import hcmute.edu.vn.nhom6.foody_06.R;
@@ -19,6 +27,7 @@ public class OrderActivity extends AppCompatActivity {
     Store store;
     User user;
     EditText txtAddress, txtPhoneNumber;
+    ListView listViewFoodSelected;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +35,15 @@ public class OrderActivity extends AppCompatActivity {
         Intent intent = getIntent();
         store = (Store) intent.getSerializableExtra("infoStore");
         user = (User) intent.getSerializableExtra("infoUser");
-        Log.d("user", user.toString());
+        HashMap<Food,Integer> mapFoodSelected = (HashMap<Food,Integer>) intent.getSerializableExtra("mapFoodSelected");
+        ArrayList<FoodSelected> listFoodSelected = new ArrayList<>();
+        mapFoodSelected.forEach((key,value) -> {
+            FoodSelected foodSelected = new FoodSelected(key,value);
+            listFoodSelected.add(foodSelected);
+        });
+
+        Log.d("mapFoodSelected", listFoodSelected.size() + "");
+
         anhXa();
         loadData();
         btnReturn.setOnClickListener(new View.OnClickListener() {
@@ -36,12 +53,22 @@ public class OrderActivity extends AppCompatActivity {
                 putData(intent);
             }
         });
+
+
+        listViewFoodSelected = findViewById(R.id.listViewFoodSelected);
+        FoodSelectedAdapter adapterFoodSelected = new FoodSelectedAdapter(
+                OrderActivity.this,
+                R.layout.viewholder_menu,
+                listFoodSelected
+        );
+        listViewFoodSelected.setAdapter(adapterFoodSelected);
     }
 
     private void anhXa(){
         btnReturn = (ImageView) findViewById(R.id.buttonReturn);
         txtAddress = (EditText) findViewById(R.id.editTextAddress);
         txtPhoneNumber = (EditText) findViewById(R.id.editTextPhoneNumber);
+        listViewFoodSelected = (ListView) findViewById(R.id.listViewFoodSelected);
     }
 
     private void loadData(){

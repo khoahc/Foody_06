@@ -1,13 +1,9 @@
 package hcmute.edu.vn.nhom6.foody_06.Adapter;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,39 +11,27 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.core.app.ActivityCompat;
-
 import java.util.List;
 
-import hcmute.edu.vn.nhom6.foody_06.Activity.OrderActivity;
 import hcmute.edu.vn.nhom6.foody_06.Activity.StoreDetailActivity;
 import hcmute.edu.vn.nhom6.foody_06.Modal.Food;
 import hcmute.edu.vn.nhom6.foody_06.Modal.FoodSelected;
-import hcmute.edu.vn.nhom6.foody_06.Modal.Store;
 import hcmute.edu.vn.nhom6.foody_06.R;
 
-public class FoodAdapter extends BaseAdapter {
-    private Context context;
-    private int layout;
-    private List<Food> foodList;
-    private OnFoodSeclectedListener onFoodSeclectedListener;
+public class FoodSelectedAdapter extends BaseAdapter {
+    Context context;
+    int layout;
+    List<FoodSelected> foodSelectedsList;
 
-    public FoodAdapter(Context context, int layout, List<Food> foodList) {
+    public FoodSelectedAdapter(Context context, int layout, List<FoodSelected> foodSelectedsList) {
         this.context = context;
         this.layout = layout;
-        this.foodList = foodList;
-
-        try {
-            this.onFoodSeclectedListener = (OnFoodSeclectedListener) context;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(e.getMessage());
-        }
-
+        this.foodSelectedsList = foodSelectedsList;
     }
 
     @Override
     public int getCount() {
-        return foodList.size();
+        return foodSelectedsList.size();
     }
 
     @Override
@@ -65,22 +49,22 @@ public class FoodAdapter extends BaseAdapter {
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(layout, null);
+        Food food = foodSelectedsList.get(i).getInfoFood();
 
         TextView txtNameFood = (TextView) view.findViewById(R.id.textViewNameFood);
-        txtNameFood.setText(foodList.get(i).getNameFood());
+        txtNameFood.setText(food.getNameFood());
 
         ImageView imgImageFood = (ImageView) view.findViewById(R.id.imageViewFood);
-        Bitmap bmImageStore = BitmapFactory.decodeByteArray(foodList.get(i).getImage(),
-                0, foodList.get(i).getImage().length);
+        Bitmap bmImageStore = BitmapFactory.decodeByteArray(food.getImage(),
+                0, food.getImage().length);
         imgImageFood.setImageBitmap(bmImageStore);
 
         TextView txtPriceFood = (TextView) view.findViewById(R.id.textViewPriceFood);
-        int price = foodList.get(i).getUnitPrice().intValue();
-        txtPriceFood.setText(String.valueOf(price + " VNĐ"));
+        txtPriceFood.setText(String.valueOf(food.getUnitPrice() + " VNĐ"));
 
         TextView textViewNumberItem;
         textViewNumberItem = (TextView) view.findViewById(R.id.textViewNumberItem);
-        textViewNumberItem.setText("0");
+        textViewNumberItem.setText(String.valueOf(foodSelectedsList.get(i).getCount()));
 
         final int[] number = {Integer.parseInt(textViewNumberItem.getText().toString())};
         ImageView btnPlusFood = (ImageView) view.findViewById(R.id.btnPlusFood);
@@ -89,11 +73,6 @@ public class FoodAdapter extends BaseAdapter {
             public void onClick(View view) {
                 ++number[0];
                 textViewNumberItem.setText(String.valueOf(number[0]));
-                Intent intent = new Intent();
-               // FoodSelected foodSelected = new FoodSelected(foodList.get(i), number[0]);
-                intent.putExtra("foodSelected", foodList.get(i));
-                intent.putExtra("isIncrease", true);
-                onFoodSeclectedListener.onFoodSelected(intent);
             }
         });
 
@@ -106,19 +85,10 @@ public class FoodAdapter extends BaseAdapter {
                 } else {
                     --number[0];
                     textViewNumberItem.setText(String.valueOf(number[0]));
-                    Intent intent = new Intent();
-                    intent.putExtra("foodSelected", foodList.get(i));
-                    intent.putExtra("isIncrease", false);
-                    onFoodSeclectedListener.onFoodSelected(intent);
                 }
             }
         });
-;
+
         return view;
     }
-
-    public interface OnFoodSeclectedListener {
-        void onFoodSelected(Intent intent);
-    }
-
 }

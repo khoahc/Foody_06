@@ -72,7 +72,7 @@
                 android:inputType="text"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_16ssp"
-                android:text="484 Lê Văn Việt, Quận 9, tp HCM"/>
+                android:text="@string/title_address"/>
 
             <TextView
                 android:id="@+id/textViewPhoneNumber"
@@ -88,12 +88,12 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_16ssp"
                 android:inputType="phone"
-                android:text="0965686868"/>
+                android:text="@string/title_phone_number"/>
 
             <ListView
-                android:id="@+id/listViewOrder"
+                android:id="@+id/listViewFoodSelected"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="400dp"
                 android:layout_marginTop="@dimen/_12ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

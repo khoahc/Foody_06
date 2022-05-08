@@ -13,6 +13,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import hcmute.edu.vn.nhom6.foody_06.Modal.Cart;
+import hcmute.edu.vn.nhom6.foody_06.Modal.CartItem;
 import hcmute.edu.vn.nhom6.foody_06.Modal.Comment;
 import hcmute.edu.vn.nhom6.foody_06.Modal.Food;
 import hcmute.edu.vn.nhom6.foody_06.Modal.Store;
@@ -96,6 +98,8 @@ public class DatabaseAccess {
        return db.update("users", cv, "phoneNumber = ?", new String[]{user.getPhoneNumber()}) > 0;
 
     }
+
+    //-------------------------------------------------------
     //STORE
     //query get list store
     public List<Store> getListStore() {
@@ -161,7 +165,7 @@ public class DatabaseAccess {
         return listFood;
     }
 
-
+    //--------------------------------------------------------------
     //COMMENT
     //querry get list comment
     public List<Comment> getListComment(Integer idStore) {
@@ -193,5 +197,49 @@ public class DatabaseAccess {
         cv.put("idStore", idStore);
 
         return db.insert("comments", null, cv) > 0;
+    }
+
+    //----------------------------------------------------------------
+    //CART
+    //query get list cart of user
+    public List<Cart> getListCartOfUser(Integer idUser) {
+        List<Cart> listCart = new ArrayList<Cart>();
+
+        Cursor c = db.rawQuery("SELECT * FROM carts WHERE carts.idUser = ?", new String[]{idUser.toString()});
+        while (c.moveToNext()) {
+            listCart.add(
+                    new Cart(
+                            c.getInt(0),
+                            c.getString(1),
+                            c.getString(2),
+                            c.getFloat(3),
+                            c.getString(4),
+                            c.getInt(5)
+                    )
+            );
+        }
+        c.close();
+        return listCart;
+    }
+
+    public List<CartItem> getListStoreOfCartUser(Integer idUser) {
+        List<CartItem> listCartItem = new ArrayList<CartItem>();
+
+        Cursor c = db.rawQuery("SELECT DISTINCT stores.nameStore, carts.totalPrice, carts.timeCreate FROM carts \n" +
+                "INNER JOIN cartDetail ON cartDetail.idCart = carts.id\n" +
+                "INNER JOIN foods ON foods.id = cartDetail.idFood\n" +
+                "INNER JOIN stores ON stores.id = foods.idStore\n" +
+                "WHERE carts.idUser = ?", new String[]{idUser.toString()});
+        while (c.moveToNext()) {
+            listCartItem.add(
+                    new CartItem(
+                            c.getString(0),
+                            c.getFloat(1),
+                            c.getString(2)
+                    )
+            );
+        }
+        c.close();
+        return listCartItem;
     }
 }

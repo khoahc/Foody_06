@@ -19,7 +19,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import hcmute.edu.vn.nhom6.foody_06.Adapter.CommentAdapter;
@@ -30,13 +32,15 @@ import hcmute.edu.vn.nhom6.foody_06.Fragment.HomeFragment;
 import hcmute.edu.vn.nhom6.foody_06.Interface.TransactStore;
 import hcmute.edu.vn.nhom6.foody_06.Modal.Comment;
 import hcmute.edu.vn.nhom6.foody_06.Modal.Food;
+import hcmute.edu.vn.nhom6.foody_06.Modal.FoodSelected;
 import hcmute.edu.vn.nhom6.foody_06.Modal.Store;
 import hcmute.edu.vn.nhom6.foody_06.Modal.User;
 import hcmute.edu.vn.nhom6.foody_06.R;
 
-public class StoreDetailActivity extends AppCompatActivity{
+public class StoreDetailActivity extends AppCompatActivity implements FoodAdapter.OnFoodSeclectedListener{
     ListView listViewMenu, listViewComment;
     List<Food> listFood = new ArrayList<Food>();
+    HashMap<Food, Integer> mapFoodSelected = new HashMap<Food, Integer>();
     List<Comment> listComment = new ArrayList<Comment>();
     ImageView btnReturn, imageStore;
     TextView txtNameStore, txtAddressStore, txtTitleNameStore;
@@ -130,6 +134,9 @@ public class StoreDetailActivity extends AppCompatActivity{
        intent.putExtra("infoStore", store);
        //put info user
        intent.putExtra("infoUser", user);
+       //put list food selected
+       intent.putExtra("mapFoodSelected", mapFoodSelected);
+
        startActivity(intent);
    }
 
@@ -170,5 +177,22 @@ public class StoreDetailActivity extends AppCompatActivity{
         databaseAccess.open();
         boolean addComment = databaseAccess.insertComment(comment, idUser, idStore);
         return addComment;
+    }
+
+    @Override
+    public void onFoodSelected(Intent intent) {
+        Food foodSelected = (Food) intent.getSerializableExtra("foodSelected");
+        boolean isIncrease = intent.getBooleanExtra("isIncrease", false);
+
+        if(mapFoodSelected.get(foodSelected) != null) {
+            if(isIncrease) {
+                mapFoodSelected.put(foodSelected, mapFoodSelected.get(foodSelected) + 1);
+            } else {
+                mapFoodSelected.put(foodSelected, mapFoodSelected.get(foodSelected) - 1);
+            }
+        } else {
+            mapFoodSelected.put(foodSelected, 1);
+        }
+
     }
 }
