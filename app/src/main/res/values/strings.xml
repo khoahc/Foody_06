@@ -35,9 +35,12 @@
     <string name="title_total_money">Tổng tiền</string>
     <string name="title_activity_admin_main">AdminMainActivity</string>
     <string name="title_list_menu">Danh sách món</string>
-
+    <string name="content_comment">Nội dung comment</string>
     <string name="title_name_user">Họ và tên</string>
     <string name="title_username">Tên đăng nhập</string>
     <string name="title_address_user">Địa chỉ giao hàng</string>
+    <string name="hint_comment">Nhập bình luận</string>
+    <string name="title_time_order">Thời gian</string>
+
 
 </resources>

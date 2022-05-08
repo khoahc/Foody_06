@@ -3,10 +3,19 @@ package hcmute.edu.vn.nhom6.foody_06.Modal;
 import java.io.Serializable;
 
 public class User implements Serializable {
+    private Integer id;
     private String phoneNumber;
     private String password;
     private String address;
     private String fullName;
+
+    public User(Integer id, String phoneNumber, String password, String address, String fullName) {
+        this.id = id;
+        this.phoneNumber = phoneNumber;
+        this.password = password;
+        this.address = address;
+        this.fullName = fullName;
+    }
 
     public User(String phoneNumber, String password, String address, String fullName) {
         this.phoneNumber = phoneNumber;
@@ -19,6 +28,14 @@ public class User implements Serializable {
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.fullName = fullName;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getPhoneNumber() {

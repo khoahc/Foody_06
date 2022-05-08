@@ -27,8 +27,6 @@ import hcmute.edu.vn.nhom6.foody_06.R;
 import hcmute.edu.vn.nhom6.foody_06.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity implements TransactStore, TransactUser {
-    private ActivityMainBinding binding;
-    DatabaseHelper databaseHelper;
     int navigation_id = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

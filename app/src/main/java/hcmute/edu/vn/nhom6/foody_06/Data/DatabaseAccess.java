@@ -7,9 +7,14 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import hcmute.edu.vn.nhom6.foody_06.Modal.Comment;
+import hcmute.edu.vn.nhom6.foody_06.Modal.Food;
 import hcmute.edu.vn.nhom6.foody_06.Modal.Store;
 import hcmute.edu.vn.nhom6.foody_06.Modal.User;
 
@@ -56,16 +61,29 @@ public class DatabaseAccess {
         return phoneNumberFind;
     }
 
+    public String getFullNameUserById(Integer idUser) {
+        Cursor c = db.rawQuery("SELECT fullName FROM users WHERE users.id = ?",
+                new String[]{idUser.toString()});
+        String fullNameUser = "";
+        if(c != null && c.getCount() == 1) {
+            c.moveToFirst();
+            fullNameUser = c.getString(0);
+        }
+        c.close();
+        return fullNameUser;
+    }
+
     public User findUserByPhoneNumber(String phoneNumber) {
         Cursor c = db.rawQuery("SELECT * FROM users WHERE users.phoneNumber = ?",
                 new String[]{phoneNumber});
         User user = null;
         if(c != null && c.getCount() == 1) {
             c.moveToFirst();
+            Integer id = c.getInt(0);
             String password = c.getString(2);
             String address = c.getString(3);
             String fullName = c.getString(4);
-            user = new User(phoneNumber, password, address, fullName);
+            user = new User(id, phoneNumber, password, address, fullName);
         }
         c.close();
         return user;
@@ -78,8 +96,8 @@ public class DatabaseAccess {
        return db.update("users", cv, "phoneNumber = ?", new String[]{user.getPhoneNumber()}) > 0;
 
     }
-
-    //querry get list store
+    //STORE
+    //query get list store
     public List<Store> getListStore() {
         List<Store> listStore = new ArrayList<Store>();
 
@@ -87,6 +105,7 @@ public class DatabaseAccess {
         while (c.moveToNext()) {
             listStore.add(
                 new Store(
+                        c.getInt(0),
                         c.getString(1),
                         c.getString(2),
                         c.getBlob(3),
@@ -98,6 +117,81 @@ public class DatabaseAccess {
         return listStore;
     }
 
+    //query find store
+    public List<Store> findStore(String keyword) {
+        List<Store> listStore = new ArrayList<Store>();
+
+        Cursor c = db.rawQuery("SELECT DISTINCT stores.id, stores.nameStore, stores.addressStore, stores.image, stores.state FROM stores\n" +
+                "INNER JOIN foods on foods.idStore = stores.id\n" +
+                "WHERE stores.nameStore LIKE \"%" + keyword + "%\" OR foods.nameFood LIKE \"%" + keyword + "%\" ", new String[]{});
+
+        while (c.moveToNext()) {
+            listStore.add(
+                    new Store(
+                            c.getInt(0),
+                            c.getString(1),
+                            c.getString(2),
+                            c.getBlob(3),
+                            c.getInt(4) == 1
+                    )
+            );
+        }
+        c.close();
+        return listStore;
+    }
+
+    //querry get list food
+    public List<Food> getListFood(Integer idStore) {
+        List<Food> listFood = new ArrayList<Food>();
+
+        Cursor c = db.rawQuery("SELECT * FROM foods WHERE foods.idStore = ?", new String[]{idStore.toString()});
+        while (c.moveToNext()) {
+            listFood.add(
+                    new Food(
+                            c.getInt(0),
+                            c.getString(1),
+                            c.getFloat(2),
+                            c.getBlob(3),
+                            c.getInt(4) == 1,
+                            c.getInt(5)
+                    )
+            );
+        }
+        c.close();
+        return listFood;
+    }
 
 
+    //COMMENT
+    //querry get list comment
+    public List<Comment> getListComment(Integer idStore) {
+        List<Comment> listComment = new ArrayList<Comment>();
+
+        Cursor c = db.rawQuery("SELECT * FROM comments WHERE comments.idStore = ?", new String[]{idStore.toString()});
+        while (c.moveToNext()) {
+            listComment.add(
+                    new Comment(
+                            c.getInt(0),
+                            c.getString(1),
+                            c.getString(2),
+                            c.getInt(3),
+                            c.getInt(4)
+                    )
+            );
+        }
+        c.close();
+        return listComment;
+    }
+
+    public boolean insertComment(String content, int idUser, int idStore) {
+        ContentValues cv = new ContentValues();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        cv.put("content", content);
+        cv.put("timeCreate", dtf.format(now).toString());
+        cv.put("idUser", idUser);
+        cv.put("idStore", idStore);
+
+        return db.insert("comments", null, cv) > 0;
+    }
 }

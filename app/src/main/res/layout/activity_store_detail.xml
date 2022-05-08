@@ -51,6 +51,7 @@
         android:id="@+id/scrollview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -105,11 +106,10 @@
             <ListView
                 android:id="@+id/listViewMenu"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:layout_marginTop="@dimen/_12ssp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewAddressStore" />
+                android:layout_height="@dimen/_400sdp"
+                android:scrollingCache="true"
+                android:smoothScrollbar="true"
+                android:layout_marginTop="@dimen/_12ssp" />
 
             <Button
                 android:id="@+id/buttonOrder"
@@ -127,12 +127,10 @@
                 android:layout_marginEnd="@dimen/_3ssp"
                 android:layout_marginTop="@dimen/_8ssp"
                 android:ems="10"
+                android:hint="@string/hint_comment"
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
-                app:layout_constraintEnd_toStartOf="@+id/button"
-                app:layout_constraintHorizontal_chainStyle="spread_inside"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/buttonOrder" />
+                app:layout_constraintHorizontal_chainStyle="spread_inside" />
 
             <Button
                 android:id="@+id/buttonComment"

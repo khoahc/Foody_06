@@ -11,18 +11,20 @@
     app:layout_constraintTop_toTopOf="parent">
 
     <EditText
-        android:id="@+id/editTextTextSearch"
+        android:id="@+id/editTextSearch"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="32dp"
+        android:imeOptions="actionSearch"
+        android:focusable="false"
+        android:inputType="text"
         android:background="@drawable/search_background"
         android:drawableStart="@drawable/search"
         android:drawablePadding="10dp"
         android:ems="10"
         android:hint="@string/title_search"
-        android:inputType="textPersonName"
         android:paddingStart="20dp"
         android:textSize="14sp"
         android:textStyle="italic"/>
