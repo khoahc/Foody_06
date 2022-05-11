@@ -17,6 +17,8 @@ import android.widget.TextView;
 
 import androidx.core.app.ActivityCompat;
 
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 import java.util.List;
 
 import hcmute.edu.vn.nhom6.foody_06.Activity.OrderActivity;
@@ -24,13 +26,14 @@ import hcmute.edu.vn.nhom6.foody_06.Activity.StoreDetailActivity;
 import hcmute.edu.vn.nhom6.foody_06.Modal.Food;
 import hcmute.edu.vn.nhom6.foody_06.Modal.FoodSelected;
 import hcmute.edu.vn.nhom6.foody_06.Modal.Store;
+import hcmute.edu.vn.nhom6.foody_06.MyFunction.MyFunction;
 import hcmute.edu.vn.nhom6.foody_06.R;
 
 public class FoodAdapter extends BaseAdapter {
     private Context context;
     private int layout;
     private List<Food> foodList;
-    private OnFoodSeclectedListener onFoodSeclectedListener;
+    private OnFoodSelectedListener onFoodSelectedListener;
 
     public FoodAdapter(Context context, int layout, List<Food> foodList) {
         this.context = context;
@@ -38,7 +41,7 @@ public class FoodAdapter extends BaseAdapter {
         this.foodList = foodList;
 
         try {
-            this.onFoodSeclectedListener = (OnFoodSeclectedListener) context;
+            this.onFoodSelectedListener = (OnFoodSelectedListener) context;
         } catch (ClassCastException e) {
             throw new ClassCastException(e.getMessage());
         }
@@ -70,15 +73,15 @@ public class FoodAdapter extends BaseAdapter {
         txtNameFood.setText(foodList.get(i).getNameFood());
 
         ImageView imgImageFood = (ImageView) view.findViewById(R.id.imageViewFood);
-        Bitmap bmImageStore = BitmapFactory.decodeByteArray(foodList.get(i).getImage(),
-                0, foodList.get(i).getImage().length);
+        Bitmap bmImageStore = MyFunction.decodeImg(foodList.get(i).getsImage());
         imgImageFood.setImageBitmap(bmImageStore);
 
+        TextView textViewNumberItem;
         TextView txtPriceFood = (TextView) view.findViewById(R.id.textViewPriceFood);
         int price = foodList.get(i).getUnitPrice().intValue();
         txtPriceFood.setText(String.valueOf(price + " VNĐ"));
 
-        TextView textViewNumberItem;
+
         textViewNumberItem = (TextView) view.findViewById(R.id.textViewNumberItem);
         textViewNumberItem.setText("0");
 
@@ -90,10 +93,11 @@ public class FoodAdapter extends BaseAdapter {
                 ++number[0];
                 textViewNumberItem.setText(String.valueOf(number[0]));
                 Intent intent = new Intent();
-               // FoodSelected foodSelected = new FoodSelected(foodList.get(i), number[0]);
+                FoodSelected foodSelected = new FoodSelected(foodList.get(i), number[0]);
+
                 intent.putExtra("foodSelected", foodList.get(i));
                 intent.putExtra("isIncrease", true);
-                onFoodSeclectedListener.onFoodSelected(intent);
+                onFoodSelectedListener.onFoodSelected(intent);
             }
         });
 
@@ -109,15 +113,16 @@ public class FoodAdapter extends BaseAdapter {
                     Intent intent = new Intent();
                     intent.putExtra("foodSelected", foodList.get(i));
                     intent.putExtra("isIncrease", false);
-                    onFoodSeclectedListener.onFoodSelected(intent);
+                    onFoodSelectedListener.onFoodSelected(intent);
                 }
+
             }
         });
 ;
         return view;
     }
 
-    public interface OnFoodSeclectedListener {
+    public interface OnFoodSelectedListener {
         void onFoodSelected(Intent intent);
     }
 

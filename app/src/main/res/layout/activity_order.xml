@@ -93,7 +93,7 @@
             <ListView
                 android:id="@+id/listViewFoodSelected"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
+                android:layout_height="@dimen/_250sdp"
                 android:layout_marginTop="@dimen/_12ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

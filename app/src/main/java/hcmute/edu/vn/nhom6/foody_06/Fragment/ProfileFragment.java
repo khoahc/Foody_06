@@ -11,18 +11,18 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import hcmute.edu.vn.nhom6.foody_06.Activity.ChangePasswordActivity;
 import hcmute.edu.vn.nhom6.foody_06.Activity.InformationActivity;
 import hcmute.edu.vn.nhom6.foody_06.Activity.SignInActivity;
 import hcmute.edu.vn.nhom6.foody_06.Interface.TransactStore;
 import hcmute.edu.vn.nhom6.foody_06.Interface.TransactUser;
 import hcmute.edu.vn.nhom6.foody_06.Modal.User;
 import hcmute.edu.vn.nhom6.foody_06.R;
+import hcmute.edu.vn.nhom6.foody_06.databinding.ActivityChangePasswordBinding;
 import hcmute.edu.vn.nhom6.foody_06.databinding.FragmentProfileBinding;
 
 public class ProfileFragment extends Fragment {
     private FragmentProfileBinding binding;
-    private TextView btnLogout;
-    private TextView textViewProfile;
     User user;
     TransactUser transactUser;
     @Override
@@ -34,11 +34,6 @@ public class ProfileFragment extends Fragment {
         binding = FragmentProfileBinding.inflate(inflater, container, false);
 
         transactUser = (TransactUser) getActivity();
-        user = transactUser.getDataUser();
-
-        //show fullname
-        textViewProfile = (TextView) binding.textViewProfile;
-        textViewProfile.setText(user.getFullName());
 
         return binding.getRoot();
 
@@ -47,11 +42,15 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        user = transactUser.getDataUser();
+        binding.textViewProfile.setText(user.getFullName());
+
         binding.textViewLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
                 intent.setClass(getActivity(), SignInActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         });
@@ -65,6 +64,20 @@ public class ProfileFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        binding.textViewChangePassword.setOnClickListener(v ->{
+            Intent intent = new Intent(getActivity(), ChangePasswordActivity.class);
+            intent.putExtra("oPwd", user.getPassword());
+            intent.putExtra("idUser", user.getId());
+            startActivity(intent);
+        });
+    }
+
+    @Override
+    public void onResume() {
+        user = transactUser.getDataUser();
+        binding.textViewProfile.setText(user.getFullName());
+        super.onResume();
     }
 
     @Override

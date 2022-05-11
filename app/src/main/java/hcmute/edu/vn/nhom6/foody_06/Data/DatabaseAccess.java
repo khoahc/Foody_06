@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
+
+import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -38,7 +41,11 @@ public class DatabaseAccess {
 
     //open the database
     public void open(){
-        this.db = openHelper.getWritableDatabase();
+        try {
+            this.db = openHelper.getWritableDatabase();
+        }catch (SQLiteAssetHelper.SQLiteAssetException e){
+            e.printStackTrace();
+        }
     }
 
     //close the database conection
@@ -61,6 +68,17 @@ public class DatabaseAccess {
         }
         c.close();
         return phoneNumberFind;
+    }
+
+    public long signUp(String phone, String password, String address, String fullName){
+        ContentValues cv = new ContentValues();
+
+        cv.put("password", password);
+        cv.put("address", address);
+        cv.put("phoneNumber", phone);
+        cv.put("fullName", fullName);
+
+        return db.insert("users", null, cv);
     }
 
     public String getFullNameUserById(Integer idUser) {
@@ -99,6 +117,14 @@ public class DatabaseAccess {
 
     }
 
+    public boolean updateUserPassword(int idUser, String password) {
+        ContentValues cv = new ContentValues();
+        cv.put("password", password);
+
+        return db.update("users", cv, "id = ?", new String[]{String.valueOf(idUser)}) > 0;
+
+    }
+
     //-------------------------------------------------------
     //STORE
     //query get list store
@@ -112,8 +138,8 @@ public class DatabaseAccess {
                         c.getInt(0),
                         c.getString(1),
                         c.getString(2),
-                        c.getBlob(3),
-                        c.getInt(4) == 1
+                        c.getString(4),
+                        c.getInt(3) == 1
                 )
             );
         }
@@ -125,7 +151,7 @@ public class DatabaseAccess {
     public List<Store> findStore(String keyword) {
         List<Store> listStore = new ArrayList<Store>();
 
-        Cursor c = db.rawQuery("SELECT DISTINCT stores.id, stores.nameStore, stores.addressStore, stores.image, stores.state FROM stores\n" +
+        Cursor c = db.rawQuery("SELECT DISTINCT stores.id, stores.nameStore, stores.addressStore, stores.sImage, stores.state FROM stores\n" +
                 "INNER JOIN foods on foods.idStore = stores.id\n" +
                 "WHERE stores.nameStore LIKE \"%" + keyword + "%\" OR foods.nameFood LIKE \"%" + keyword + "%\" ", new String[]{});
 
@@ -135,13 +161,19 @@ public class DatabaseAccess {
                             c.getInt(0),
                             c.getString(1),
                             c.getString(2),
-                            c.getBlob(3),
+                            c.getString(3),
                             c.getInt(4) == 1
                     )
             );
         }
         c.close();
         return listStore;
+    }
+
+    public boolean updateStore(Store store) {
+        ContentValues cv = new ContentValues();
+        cv.put("sImage", store.getImage());
+        return db.update("stores", cv, "id = ?", new String[]{store.getId().toString()}) > 0;
     }
 
     //querry get list food
@@ -155,14 +187,41 @@ public class DatabaseAccess {
                             c.getInt(0),
                             c.getString(1),
                             c.getFloat(2),
-                            c.getBlob(3),
-                            c.getInt(4) == 1,
-                            c.getInt(5)
+                            c.getString(5),
+                            c.getInt(3) == 1,
+                            c.getInt(4)
                     )
             );
         }
         c.close();
         return listFood;
+    }
+
+    //querry get list food
+    public List<Food> getAllFood() {
+        List<Food> listFood = new ArrayList<Food>();
+
+        Cursor c = db.rawQuery("SELECT * FROM foods",null);
+        while (c.moveToNext()) {
+            listFood.add(
+                    new Food(
+                            c.getInt(0),
+                            c.getString(1),
+                            c.getFloat(2),
+                            c.getString(5),
+                            c.getInt(3) == 1,
+                            c.getInt(4)
+                    )
+            );
+        }
+        c.close();
+        return listFood;
+    }
+
+    public boolean updateFood(Food food) {
+        ContentValues cv = new ContentValues();
+        cv.put("sImage", food.getsImage());
+        return db.update("foods", cv, "id = ?", new String[]{food.getId().toString()}) > 0;
     }
 
     //--------------------------------------------------------------
@@ -241,5 +300,29 @@ public class DatabaseAccess {
         }
         c.close();
         return listCartItem;
+    }
+
+    public long addToCart(int idUser, String destination, String phone, double price){
+        ContentValues cv = new ContentValues();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+
+        cv.put("timeCreate", dtf.format(now).toString());
+        cv.put("idUser", idUser);
+        cv.put("deliveryAddress", destination);
+        cv.put("totalPrice", price);
+        cv.put("phoneNumber", phone);
+
+        return db.insert("carts", null, cv);
+    }
+
+    public long addToCartDetail(long idCart, Integer idFood, int count) {
+        ContentValues cv = new ContentValues();
+
+        cv.put("idCart", idCart);
+        cv.put("idFood", idFood);
+        cv.put("count", count);
+
+        return db.insert("cartDetail", null, cv);
     }
 }

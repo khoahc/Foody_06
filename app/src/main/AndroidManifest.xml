@@ -12,19 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Foody_06">
         <activity
+            android:name=".Activity.SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.ChangePasswordActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.SearchActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.InformationActivity"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".Activity.AdminAddStoreActivity"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".Activity.AdminStoreDetailActivity"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".Activity.AdminMainActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".Activity.OrderActivity"

@@ -63,4 +63,12 @@ public class CommentAdapter extends BaseAdapter {
 
         return view;
     }
+
+    public List<Comment> getCommentList() {
+        return commentList;
+    }
+
+    public void setCommentList(List<Comment> commentList) {
+        this.commentList = commentList;
+    }
 }

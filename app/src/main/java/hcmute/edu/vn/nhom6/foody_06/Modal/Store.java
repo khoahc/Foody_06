@@ -6,10 +6,10 @@ public class Store implements Serializable {
     private Integer id;
     private String name;
     private String addressStore;
-    private byte[] image;
+    private String image;
     private boolean state;
 
-    public Store(Integer id, String name, String address, byte[] image, boolean state) {
+    public Store(Integer id, String name, String address, String image, boolean state) {
         this.id = id;
         this.name = name;
         this.addressStore = address;
@@ -17,7 +17,7 @@ public class Store implements Serializable {
         this.state = state;
     }
 
-    public Store(String name, String address, byte[] image, boolean state) {
+    public Store(String name, String address, String image, boolean state) {
         this.name = name;
         this.addressStore = address;
         this.image = image;
@@ -43,11 +43,11 @@ public class Store implements Serializable {
         this.addressStore = address;
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

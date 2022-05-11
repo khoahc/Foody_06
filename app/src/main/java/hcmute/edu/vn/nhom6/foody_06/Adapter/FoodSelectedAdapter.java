@@ -1,9 +1,7 @@
 package hcmute.edu.vn.nhom6.foody_06.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,25 +11,30 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import hcmute.edu.vn.nhom6.foody_06.Activity.StoreDetailActivity;
+import hcmute.edu.vn.nhom6.foody_06.Activity.OrderActivity;
 import hcmute.edu.vn.nhom6.foody_06.Modal.Food;
 import hcmute.edu.vn.nhom6.foody_06.Modal.FoodSelected;
+import hcmute.edu.vn.nhom6.foody_06.MyFunction.MyFunction;
 import hcmute.edu.vn.nhom6.foody_06.R;
 
 public class FoodSelectedAdapter extends BaseAdapter {
     Context context;
     int layout;
-    List<FoodSelected> foodSelectedsList;
+    List<FoodSelected> foodSelectedList;
+    Float price;
+    TextView txtPrice;
 
-    public FoodSelectedAdapter(Context context, int layout, List<FoodSelected> foodSelectedsList) {
+    public FoodSelectedAdapter(Context context, int layout, List<FoodSelected> foodSelectedList, Float price) {
         this.context = context;
         this.layout = layout;
-        this.foodSelectedsList = foodSelectedsList;
+        this.foodSelectedList = foodSelectedList;
+        txtPrice = ((OrderActivity) context).findViewById(R.id.textViewTotalMoney);
+        this.price = price;
     }
 
     @Override
     public int getCount() {
-        return foodSelectedsList.size();
+        return foodSelectedList.size();
     }
 
     @Override
@@ -49,30 +52,31 @@ public class FoodSelectedAdapter extends BaseAdapter {
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(layout, null);
-        Food food = foodSelectedsList.get(i).getInfoFood();
+        Food food = foodSelectedList.get(i).getInfoFood();
 
         TextView txtNameFood = (TextView) view.findViewById(R.id.textViewNameFood);
         txtNameFood.setText(food.getNameFood());
 
         ImageView imgImageFood = (ImageView) view.findViewById(R.id.imageViewFood);
-        Bitmap bmImageStore = BitmapFactory.decodeByteArray(food.getImage(),
-                0, food.getImage().length);
+        Bitmap bmImageStore = MyFunction.decodeImg(food.getsImage());
         imgImageFood.setImageBitmap(bmImageStore);
 
         TextView txtPriceFood = (TextView) view.findViewById(R.id.textViewPriceFood);
-        txtPriceFood.setText(String.valueOf(food.getUnitPrice() + " VNĐ"));
+        txtPriceFood.setText(String.valueOf(food.getUnitPrice().intValue() + " VNĐ"));
 
         TextView textViewNumberItem;
         textViewNumberItem = (TextView) view.findViewById(R.id.textViewNumberItem);
-        textViewNumberItem.setText(String.valueOf(foodSelectedsList.get(i).getCount()));
+        textViewNumberItem.setText(String.valueOf(foodSelectedList.get(i).getCount()));
 
-        final int[] number = {Integer.parseInt(textViewNumberItem.getText().toString())};
         ImageView btnPlusFood = (ImageView) view.findViewById(R.id.btnPlusFood);
+
         btnPlusFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ++number[0];
-                textViewNumberItem.setText(String.valueOf(number[0]));
+                foodSelectedList.get(i).setCount(foodSelectedList.get(i).getCount() + 1);
+                price += foodSelectedList.get(i).getInfoFood().getUnitPrice();
+                ((OrderActivity)context).setPrice(price);
+                notifyDataSetChanged();
             }
         });
 
@@ -80,15 +84,28 @@ public class FoodSelectedAdapter extends BaseAdapter {
         btnMinusFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(number[0] <= 0) {
+                if(foodSelectedList.get(i).getCount() <= 0) {
                     textViewNumberItem.setText("0");
                 } else {
-                    --number[0];
-                    textViewNumberItem.setText(String.valueOf(number[0]));
+                    foodSelectedList.get(i).setCount(foodSelectedList.get(i).getCount() - 1);
+                    price -= foodSelectedList.get(i).getInfoFood().getUnitPrice();
+                    ((OrderActivity)context).setPrice(price);
+                    notifyDataSetChanged();
                 }
             }
         });
 
         return view;
+    }
+
+    @Override
+    public void notifyDataSetChanged() {
+        super.notifyDataSetChanged();
+        int priceInt = price.intValue();
+        txtPrice.setText(String.valueOf(priceInt)+" VNĐ");
+    }
+
+    public List<FoodSelected> getFoodSelectedList() {
+        return foodSelectedList;
     }
 }

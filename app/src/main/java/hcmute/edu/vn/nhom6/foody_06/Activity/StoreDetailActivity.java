@@ -23,6 +23,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import hcmute.edu.vn.nhom6.foody_06.Adapter.CommentAdapter;
 import hcmute.edu.vn.nhom6.foody_06.Adapter.FoodAdapter;
@@ -35,9 +36,10 @@ import hcmute.edu.vn.nhom6.foody_06.Modal.Food;
 import hcmute.edu.vn.nhom6.foody_06.Modal.FoodSelected;
 import hcmute.edu.vn.nhom6.foody_06.Modal.Store;
 import hcmute.edu.vn.nhom6.foody_06.Modal.User;
+import hcmute.edu.vn.nhom6.foody_06.MyFunction.MyFunction;
 import hcmute.edu.vn.nhom6.foody_06.R;
 
-public class StoreDetailActivity extends AppCompatActivity implements FoodAdapter.OnFoodSeclectedListener{
+public class StoreDetailActivity extends AppCompatActivity implements FoodAdapter.OnFoodSelectedListener{
     ListView listViewMenu, listViewComment;
     List<Food> listFood = new ArrayList<Food>();
     HashMap<Food, Integer> mapFoodSelected = new HashMap<Food, Integer>();
@@ -49,6 +51,8 @@ public class StoreDetailActivity extends AppCompatActivity implements FoodAdapte
     Store store;
     User user;
     CommentAdapter adapterComment;
+    DatabaseAccess databaseAccess;
+    List<FoodSelected> listFoodSelected = new ArrayList<FoodSelected>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,9 +97,9 @@ public class StoreDetailActivity extends AppCompatActivity implements FoodAdapte
 
                 if(commentSuccess){
                     Toast.makeText(StoreDetailActivity.this, "Bình luận thành công", Toast.LENGTH_SHORT).show();
-                    finish();
-                    startActivity(getIntent());
-                    overridePendingTransition(0, 0);
+                    adapterComment.setCommentList(databaseAccess.getListComment(store.getId()));
+                    adapterComment.notifyDataSetChanged();
+                    editTxtComment.setText(null);
                 }
                 else {
                     Toast.makeText(StoreDetailActivity.this, "Bình luận thất bại", Toast.LENGTH_SHORT).show();
@@ -110,8 +114,7 @@ public class StoreDetailActivity extends AppCompatActivity implements FoodAdapte
         txtNameStore.setText(name);
         txtTitleNameStore.setText(name);
         txtAddressStore.setText(store.getAddress());
-        Bitmap bmImageStore = BitmapFactory.decodeByteArray(store.getImage(),
-                0, store.getImage().length);
+        Bitmap bmImageStore = MyFunction.decodeImg(store.getImage());
         imageStore.setImageBitmap(bmImageStore);
     }
 
@@ -130,10 +133,12 @@ public class StoreDetailActivity extends AppCompatActivity implements FoodAdapte
     }
 
    private void putData(Intent intent) {
+
        //put info store
        intent.putExtra("infoStore", store);
        //put info user
        intent.putExtra("infoUser", user);
+
        //put list food selected
        intent.putExtra("mapFoodSelected", mapFoodSelected);
 
@@ -164,13 +169,28 @@ public class StoreDetailActivity extends AppCompatActivity implements FoodAdapte
     }
 
     private void readData() {
-        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(StoreDetailActivity.this);
+        databaseAccess = DatabaseAccess.getInstance(StoreDetailActivity.this);
         databaseAccess.open();
 
         listFood = databaseAccess.getListFood(store.getId());
         listComment = databaseAccess.getListComment(store.getId());
-    }
 
+//        List<Food> allFood = databaseAccess.getAllFood();
+//        for (Food i: allFood) {
+//            Bitmap bitmap = MyFunction.decodeImg(i.getsImage());
+//            i.setsImage(MyFunction.encodeImg(bitmap, 250));
+//            databaseAccess.updateFood(i);
+//        }
+//
+//        List<Store> allStore = databaseAccess.getListStore();
+//        for (Store i: allStore) {
+//
+//            Bitmap bitmap = MyFunction.decodeImg(i.getImage());
+//            i.setImage(MyFunction.encodeImg(bitmap, 400));
+//            databaseAccess.updateStore(i);
+//        }
+
+    }
 
     private boolean comment(String comment, int idUser, int idStore){
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(StoreDetailActivity.this);
@@ -188,11 +208,47 @@ public class StoreDetailActivity extends AppCompatActivity implements FoodAdapte
             if(isIncrease) {
                 mapFoodSelected.put(foodSelected, mapFoodSelected.get(foodSelected) + 1);
             } else {
-                mapFoodSelected.put(foodSelected, mapFoodSelected.get(foodSelected) - 1);
+                int count = mapFoodSelected.get(foodSelected) - 1;
+                if(count > 0) {
+                    mapFoodSelected.put(foodSelected, mapFoodSelected.get(foodSelected) - 1);
+                } else {
+                    mapFoodSelected.remove(foodSelected);
+                }
             }
         } else {
             mapFoodSelected.put(foodSelected, 1);
         }
+        Log.d("mapFoodSelected", mapFoodSelected.toString());
+
+//        //update list food selected
+//        if(listFoodSelected.size() > 0) {
+//            for (int i = 0; i < listFoodSelected.size(); i++) {
+//                if (listFoodSelected.get(i).getInfoFood().getId().equals(foodSelected.getId())) {
+//                    if (isIncrease) {
+//                        listFoodSelected.get(i).setCount(listFoodSelected.get(i).getCount() + 1);
+//                    } else {
+//                        int count = listFoodSelected.get(i).getCount() - 1;
+//                        if (count > 0) {
+//                            listFoodSelected.get(i).setCount(listFoodSelected.get(i).getCount() - 1);
+//                        } else {
+//                            listFoodSelected.remove(i);
+//                        }
+//                    }
+//                } else {
+//                    if (isIncrease) {
+//                        listFoodSelected.add(new FoodSelected(foodSelected, 1));
+//                    } else {
+//                        listFoodSelected.add(new FoodSelected(foodSelected, 0));
+//                    }
+//                }
+//            }
+//        } else {
+//            if (isIncrease) {
+//                listFoodSelected.add(new FoodSelected(foodSelected, 1));
+//            } else {
+//                listFoodSelected.add(new FoodSelected(foodSelected, 0));
+//            }
+//        }
 
     }
 }

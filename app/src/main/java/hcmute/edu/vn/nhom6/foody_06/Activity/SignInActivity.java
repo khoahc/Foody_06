@@ -16,35 +16,32 @@ import hcmute.edu.vn.nhom6.foody_06.Data.DatabaseAccess;
 import hcmute.edu.vn.nhom6.foody_06.Fragment.HomeFragment;
 import hcmute.edu.vn.nhom6.foody_06.Modal.Store;
 import hcmute.edu.vn.nhom6.foody_06.R;
+import hcmute.edu.vn.nhom6.foody_06.databinding.ActivitySignInBinding;
 
 public class SignInActivity extends AppCompatActivity {
 
-    private MaterialButton btnSignIn, btnSignInAdmin;
-    private EditText phoneNumber, password;
+    ActivitySignInBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_in);
+        binding = ActivitySignInBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        btnSignIn = (MaterialButton) findViewById(R.id.buttonSignIn);
-        btnSignInAdmin = (MaterialButton) findViewById(R.id.buttonSignInAdmin);
-        phoneNumber = (EditText) findViewById(R.id.inputPhoneNumber);
-        password = (EditText) findViewById(R.id.inputPassword);
-
-        btnSignIn.setOnClickListener(new View.OnClickListener() {
+        binding.buttonSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
                 databaseAccess.open();
 
-                String phoneUserLogin = databaseAccess.loginUser(phoneNumber.getText().toString(),
-                        password.getText().toString());
+                String phoneUserLogin = databaseAccess.loginUser(binding.inputPhoneNumber.getText().toString(),
+                        binding.inputPassword.getText().toString());
                 databaseAccess.close();
                 if(!phoneUserLogin.equals("")){
                     Toast.makeText(SignInActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(SignInActivity.this, MainActivity.class);
                     intent.putExtra("phoneNumberUser", phoneUserLogin);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                     finish();
                 }
@@ -55,13 +52,8 @@ public class SignInActivity extends AppCompatActivity {
             }
         });
 
-        btnSignInAdmin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SignInActivity.this, AdminMainActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        binding.buttonSignUp.setOnClickListener(v -> {
+            startActivity(new Intent(this, SignUpActivity.class));
         });
 
     }

@@ -64,17 +64,6 @@
             android:layout_marginBottom="@dimen/_12ssp"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/imageViewInfo"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/profile"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="parent"
-                android:contentDescription="@string/image_avatar" />
-
             <TextView
                 android:id="@+id/textViewTitleFullName"
                 android:layout_width="wrap_content"

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import hcmute.edu.vn.nhom6.foody_06.Modal.Store;
+import hcmute.edu.vn.nhom6.foody_06.MyFunction.MyFunction;
 import hcmute.edu.vn.nhom6.foody_06.R;
 
 public class StoreAdapter extends BaseAdapter {
@@ -50,8 +51,7 @@ public class StoreAdapter extends BaseAdapter {
         txtNameStore.setText(storeList.get(i).getName());
 
         ImageView imgImageStore = (ImageView) view.findViewById(R.id.imageViewStore);
-        Bitmap bmImageStore = BitmapFactory.decodeByteArray(storeList.get(i).getImage(),
-                0, storeList.get(i).getImage().length);
+        Bitmap bmImageStore = MyFunction.decodeImg(storeList.get(i).getImage());
         imgImageStore.setImageBitmap(bmImageStore);
 
         return view;

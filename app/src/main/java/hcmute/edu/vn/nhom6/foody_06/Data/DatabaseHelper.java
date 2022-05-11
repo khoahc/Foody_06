@@ -1,8 +1,6 @@
 package hcmute.edu.vn.nhom6.foody_06.Data;
 
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
@@ -16,5 +14,4 @@ public class DatabaseHelper extends SQLiteAssetHelper {
     public DatabaseHelper(Context context)  {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
-
 }

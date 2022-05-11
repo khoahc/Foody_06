@@ -3,26 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@+id/emptyFragment">
+    app:startDestination="@+id/homeFragment">
 
-    <fragment
-        android:id="@+id/emptyFragment"
-        android:name="hcmute.edu.vn.nhom6.foody_06.Fragment.EmptyFragment"
-        tools:layout="@layout/fragment_empty">
-    </fragment>
+<!--    <fragment-->
+<!--        android:id="@+id/emptyFragment"-->
+<!--        android:name="hcmute.edu.vn.nhom6.foody_06.Fragment.EmptyFragment"-->
+<!--        tools:layout="@layout/fragment_empty">-->
+<!--    </fragment>-->
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="hcmute.edu.vn.nhom6.foody_06.Fragment.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home">
-    </fragment>
-
-    <fragment
-        android:id="@+id/adminHomeFragment"
-        android:name="hcmute.edu.vn.nhom6.foody_06.Fragment.AdminHomeFragment"
-        android:label="@string/title_admin_home"
-        tools:layout="@layout/fragment_admin_home">
     </fragment>
 
     <fragment

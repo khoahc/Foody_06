@@ -3,6 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Code/Java/Android/Foody_06/app/src/main/res/layout/activity_admin_main.xml" value="0.23854166666666668" />
+        <entry key="..\:/Code/Java/Android/Foody_06/app/src/main/res/layout/activity_change_password.xml" value="0.1" />
+        <entry key="..\:/Code/Java/Android/Foody_06/app/src/main/res/layout/activity_main.xml" value="0.23854166666666668" />
+        <entry key="..\:/Code/Java/Android/Foody_06/app/src/main/res/layout/activity_order.xml" value="0.24817518248175183" />
+        <entry key="..\:/Code/Java/Android/Foody_06/app/src/main/res/layout/activity_sign_in.xml" value="0.20833333333333334" />
+        <entry key="..\:/Code/Java/Android/Foody_06/app/src/main/res/layout/activity_sign_up.xml" value="0.20833333333333334" />
+        <entry key="..\:/Code/Java/Android/Foody_06/app/src/main/res/layout/activity_store_detail.xml" value="0.25416666666666665" />
+        <entry key="..\:/Code/Java/Android/Foody_06/app/src/main/res/layout/viewholder_order.xml" value="0.1160081053698075" />
+        <entry key="..\:/Code/Java/Android/Foody_06/app/src/main/res/layout/viewholder_store.xml" value="0.23854166666666668" />
+        <entry key="..\:/Code/Java/Android/Foody_06/app/src/main/res/layout/viewholder_store_search.xml" value="0.11594202898550725" />
+        <entry key="..\:/Code/Java/Android/Foody_06/app/src/main/res/menu/menu.xml" value="0.14583333333333334" />
         <entry key="..\:/Users/khoah/AndroidStudioProjects/Foody_06/app/src/main/res/drawable-ldpi/ic_google.xml" value="0.1895" />
         <entry key="..\:/Users/khoah/AndroidStudioProjects/Foody_06/app/src/main/res/drawable-mdpi/search_background.xml" value="0.217" />
         <entry key="..\:/Users/khoah/AndroidStudioProjects/Foody_06/app/src/main/res/drawable-xxxhdpi/cart_background.xml" value="0.165" />
@@ -44,6 +55,26 @@
         <entry key="..\:/Users/khoah/AndroidStudioProjects/Foody_06/app/src/main/res/layout/viewholder_store.xml" value="0.4" />
         <entry key="..\:/Users/khoah/AndroidStudioProjects/Foody_06/app/src/main/res/layout/viewholder_store_search.xml" value="0.264" />
         <entry key="..\:/Users/khoah/AndroidStudioProjects/Foody_06/app/src/main/res/menu/menu.xml" value="0.264" />
+        <entry key="..\:/Users/khoah/Desktop/Foody_06/Foody_06/app/src/main/res/layout/activity_admin_add_store.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/khoah/Desktop/Foody_06/Foody_06/app/src/main/res/layout/activity_change_password.xml" value="0.25" />
+        <entry key="..\:/Users/khoah/Desktop/Foody_06/Foody_06/app/src/main/res/layout/activity_information.xml" value="0.25" />
+        <entry key="..\:/Users/khoah/Desktop/Foody_06/Foody_06/app/src/main/res/layout/activity_intro.xml" value="0.25" />
+        <entry key="..\:/Users/khoah/Desktop/Foody_06/Foody_06/app/src/main/res/layout/activity_main.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/khoah/Desktop/Foody_06/Foody_06/app/src/main/res/layout/activity_order.xml" value="0.25" />
+        <entry key="..\:/Users/khoah/Desktop/Foody_06/Foody_06/app/src/main/res/layout/activity_search.xml" value="0.25" />
+        <entry key="..\:/Users/khoah/Desktop/Foody_06/Foody_06/app/src/main/res/layout/activity_sign_in.xml" value="0.176" />
+        <entry key="..\:/Users/khoah/Desktop/Foody_06/Foody_06/app/src/main/res/layout/activity_sign_up.xml" value="0.2" />
+        <entry key="..\:/Users/khoah/Desktop/Foody_06/Foody_06/app/src/main/res/layout/activity_store_detail.xml" value="0.25" />
+        <entry key="..\:/Users/khoah/Desktop/Foody_06/Foody_06/app/src/main/res/layout/fragment_admin_home.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/khoah/Desktop/Foody_06/Foody_06/app/src/main/res/layout/fragment_cart.xml" value="0.25" />
+        <entry key="..\:/Users/khoah/Desktop/Foody_06/Foody_06/app/src/main/res/layout/fragment_empty.xml" value="0.25" />
+        <entry key="..\:/Users/khoah/Desktop/Foody_06/Foody_06/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Users/khoah/Desktop/Foody_06/Foody_06/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
+        <entry key="..\:/Users/khoah/Desktop/Foody_06/Foody_06/app/src/main/res/layout/viewholder_comment.xml" value="0.25" />
+        <entry key="..\:/Users/khoah/Desktop/Foody_06/Foody_06/app/src/main/res/layout/viewholder_menu.xml" value="0.25" />
+        <entry key="..\:/Users/khoah/Desktop/Foody_06/Foody_06/app/src/main/res/layout/viewholder_order.xml" value="0.25" />
+        <entry key="..\:/Users/khoah/Desktop/Foody_06/Foody_06/app/src/main/res/layout/viewholder_store.xml" value="0.2" />
+        <entry key="..\:/Users/khoah/Desktop/Foody_06/Foody_06/app/src/main/res/layout/viewholder_store_search.xml" value="0.264" />
       </map>
     </option>
   </component>

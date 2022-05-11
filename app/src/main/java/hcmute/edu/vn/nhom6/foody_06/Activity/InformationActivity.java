@@ -22,65 +22,46 @@ import hcmute.edu.vn.nhom6.foody_06.Fragment.CartFragment;
 import hcmute.edu.vn.nhom6.foody_06.Fragment.ProfileFragment;
 import hcmute.edu.vn.nhom6.foody_06.Modal.User;
 import hcmute.edu.vn.nhom6.foody_06.R;
+import hcmute.edu.vn.nhom6.foody_06.databinding.ActivityInformationBinding;
 
 public class InformationActivity extends AppCompatActivity {
-    ImageView btnReturn;
-    EditText txtFullName, txtAddress;
-    TextView textViewPhoneNumber;
-    Button btnSaveInfo;
     User user;
+    ActivityInformationBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_information);
+        binding = ActivityInformationBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("infoUser");
-        System.out.println(user.getAddress());
 
-        anhXa();
         loadData(user);
 
-        btnReturn.setOnClickListener(new View.OnClickListener() {
+        binding.buttonReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(InformationActivity.this, MainActivity.class);
-                intent.putExtra("navigation_id", 3);
-                intent.putExtra("infoUser", user);
-                intent.putExtra("phoneNumberUser", user.getPhoneNumber());
-                startActivity(intent);
-                finish();
+                onBackPressed();
             }
         });
 
-        btnSaveInfo.setOnClickListener(new View.OnClickListener() {
+        binding.buttonSaveInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 saveInfoUser();
-                Intent intent = new Intent(InformationActivity.this, MainActivity.class);
-                intent.putExtra("navigation_id", 3);
-                intent.putExtra("phoneNumberUser", user.getPhoneNumber());
-                startActivity(intent);
                 finish();
             }
         });
     }
 
     private void loadData(User user) {
-        txtFullName.setText(user.getFullName());
-        txtAddress.setText(user.getAddress());
-        textViewPhoneNumber.setText(user.getPhoneNumber());
-    }
-    private void anhXa(){
-        textViewPhoneNumber = (TextView) findViewById(R.id.textViewPhoneNumber);
-        txtAddress = (EditText) findViewById(R.id.editTextAddress);
-        txtFullName = (EditText) findViewById(R.id.editTextFullName);
-        btnReturn = (ImageView) findViewById(R.id.buttonReturn);
-        btnSaveInfo = (Button) findViewById(R.id.buttonSaveInfo);
+        binding.editTextFullName.setText(user.getFullName());
+        binding.editTextAddress.setText(user.getAddress());
+        binding.textViewPhoneNumber.setText(user.getPhoneNumber());
     }
 
     private void saveInfoUser() {
-        String fullName = txtFullName.getText().toString();
-        String address = txtAddress.getText().toString();
+        String fullName = binding.editTextFullName.getText().toString();
+        String address = binding.editTextAddress.getText().toString();
         String phoneNumber = user.getPhoneNumber();
         User user = new User(phoneNumber, address, fullName);
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
@@ -88,11 +69,14 @@ public class InformationActivity extends AppCompatActivity {
         if(databaseAccess.updateUser(user)){
             Toast.makeText(InformationActivity.this, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
             Log.d("updateuser", "thanhcong");
+            user.setAddress(address);
+            user.setFullName(fullName);
+            Intent intent = getIntent();
+            intent.putExtra("infoUser", user);
         } else {
             Toast.makeText(InformationActivity.this, "Cập nhật thất bại", Toast.LENGTH_SHORT).show();
             Log.d("updateuser", "thatbai");
         }
         databaseAccess.close();
-
     }
 }

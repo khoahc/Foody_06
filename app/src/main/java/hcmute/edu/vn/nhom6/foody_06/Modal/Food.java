@@ -3,26 +3,26 @@ package hcmute.edu.vn.nhom6.foody_06.Modal;
 import java.io.Serializable;
 
 public class Food implements Serializable {
-    private Integer id;
+    private int id;
     private String nameFood;
     private Float unitPrice;
-    private byte[] image;
     private boolean state;
-    private Integer idStore;
+    private int idStore;
+    private String sImage;
 
-    public Food(Integer id, String nameFood, Float unitPrice, byte[] image, boolean state, Integer idStore) {
+    public Food(Integer id, String nameFood, Float unitPrice, String sImage, boolean state, Integer idStore) {
         this.id = id;
         this.nameFood = nameFood;
         this.unitPrice = unitPrice;
-        this.image = image;
+        this.sImage = sImage;
         this.state = state;
         this.idStore = idStore;
     }
 
-    public Food(String nameFood, Float unitPrice, byte[] image, boolean state, Integer idStore) {
+    public Food(String nameFood, Float unitPrice, String sImage, boolean state, Integer idStore) {
         this.nameFood = nameFood;
         this.unitPrice = unitPrice;
-        this.image = image;
+        this.sImage = sImage;
         this.state = state;
         this.idStore = idStore;
     }
@@ -54,14 +54,6 @@ public class Food implements Serializable {
         this.unitPrice = unitPrice;
     }
 
-    public byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
-    }
-
     public boolean isState() {
         return state;
     }
@@ -76,5 +68,12 @@ public class Food implements Serializable {
 
     public void setIdStore(Integer idStore) {
         this.idStore = idStore;
+    }
+
+    public String getsImage() {
+        return sImage;
+    }
+    public void setsImage(String sImage) {
+        this.sImage = sImage;
     }
 }
